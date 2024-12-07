@@ -1,10 +1,12 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, Output, SimpleChanges } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
+import { Card } from '../../models';
 
 export interface CardConfig  {
   id: string;
   title: string;
+  displayed: boolean;
   viewOnly?: boolean;
   subtitle?: string;
   content?: string;
@@ -19,10 +21,10 @@ export interface CardConfig  {
 })
 export class CardComponent {
   @Input({ required: true }) config!: CardConfig;
-  @Output() cardPlayed = new EventEmitter<string>();
+  @Output() cardPlayed = new EventEmitter<Card>();
 
   playCard() {
-    this.cardPlayed.emit(this.config.id);
+    this.cardPlayed.emit({id: this.config.id, title: this.config.title, displayed: false});
   }
 
 }

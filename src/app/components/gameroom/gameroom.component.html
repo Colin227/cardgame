@@ -1,14 +1,20 @@
 <p>gameroom works!</p>
+
+<div class="played-cards-wrapper">
+    @for (card of playedCards; track $index) {
+        <app-card [config]="{id: card.id, title: card.title, displayed: card.displayed, viewOnly: true}" (cardPlayed)="flipCard($event)"></app-card>
+    }
+</div>
+<mat-divider></mat-divider>
+
 <div class="all-cards-wrapper">
     @for (card of allCards; track card.id) {
-        <app-card [config]="{id: card.id, title: card.title}" (cardPlayed)="playCard($event)"></app-card>
+        <app-card [config]="{id: card.id, title: card.title, displayed: true}" (cardPlayed)="playCard($event)"></app-card>
     }
 </div>
 
 
-<mat-divider></mat-divider>
-
-
-@for (card of playedCards; track $index) {
-    <app-card [config]="{id: card, title: card, viewOnly: true}"></app-card>
-}
+<div>
+    <button mat-button (click)="flipAllCards()">Flip All</button>
+    <button mat-button (click)="resetBoard()">Reset</button>
+</div>
