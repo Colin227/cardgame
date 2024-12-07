@@ -1,0 +1,14 @@
+<p>gameroom works!</p>
+<div class="all-cards-wrapper">
+    @for (card of allCards; track card.id) {
+        <app-card [config]="{id: card.id, title: card.title}" (cardPlayed)="playCard($event)"></app-card>
+    }
+</div>
+
+
+<mat-divider></mat-divider>
+
+
+@for (card of playedCards; track $index) {
+    <app-card [config]="{id: card, title: card, viewOnly: true}"></app-card>
+}

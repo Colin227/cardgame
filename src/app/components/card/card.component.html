@@ -1,0 +1,14 @@
+<mat-card appearance="outlined">
+    <mat-card-header>{{config.title}}</mat-card-header>
+    @if (config.subtitle) {
+        <mat-card-subtitle>{{config.subtitle}}</mat-card-subtitle>
+    }
+    <mat-card-content>{{config.content}}</mat-card-content>
+    @if (!config.viewOnly) {
+        <mat-card-actions>
+            <button mat-button (click)="playCard()">Play card</button>
+        </mat-card-actions>
+    }
+   
+  </mat-card>
+  
