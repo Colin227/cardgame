@@ -61,7 +61,9 @@ export class GameroomComponent {
     this._webSocketService.sendMessage([message]);
   }
 
-  flipAllCards() {    
-    this._webSocketService.sendMessage([{ type: 'flipAllCards', data: ''}]);
+  flipAllCards() {   
+    if (this.playedCards.length) {
+      this._webSocketService.sendMessage([{ type: 'flipAllCards', data: ''}]);
+    }
   }
 }
